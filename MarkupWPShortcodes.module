@@ -113,11 +113,11 @@ class MarkupWPShortcodes extends WireData implements Module
             return $content;
         }
 
-        $content = preg_replace('/\<p\>\[([^\]]+)\]\<\/p\>/i', '[$1]', $content);
+        $content = preg_replace('/\<p\>(\&nbsp\;|\s)*\[([^\]]+)\](\&nbsp\;|\s)*\<\/p\>/i', '[$2]', $content);
 
         return $content;
     }
-    
+
     /**
      * The following code is an adaptation of WP shortcode functions taken from
      * @package WordPress
