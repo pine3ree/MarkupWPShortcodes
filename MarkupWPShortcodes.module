@@ -19,7 +19,7 @@ class MarkupWPShortcodes extends WireData implements Module
     {
         return array(
             'title'    => 'Markup WP Shortcodes',
-            'version'  => 11,
+            'version'  => 12,
             'summary'  => 'The WP shortcode rendering engine is now available in PW template files',
             'author'   => 'pine3ree',
             'href'     => 'https://github.com/pine3ree/MarkupWPShortcodes',
@@ -74,6 +74,8 @@ class MarkupWPShortcodes extends WireData implements Module
             $this->initialized = true;
         }
 
+        $content = $this->cleanupBefore($content);
+
         return $this->doShortcode($content);
     }
 
@@ -97,6 +99,24 @@ class MarkupWPShortcodes extends WireData implements Module
         return $this;
     }
 
+    /**
+     * Cleanup wrapping paragraphs before rendering shortcodes
+     * @param string|null $content
+     * @return string
+     */
+    public function cleanupBefore($content = null)
+    {
+        if (!$content) return '';
+
+        if (false === strpos( $content, '[' )) {
+            return $content;
+        }
+
+        $content = preg_replace('/\<p\>\[/i', '[', $content);
+        $content = preg_replace('/\]\<\/p\>/i', ']', $content);
+
+        return $content;
+    }
     /**
      * The following code is an adaptation of WP shortcode functions taken from
      * @package WordPress
@@ -242,7 +262,7 @@ class MarkupWPShortcodes extends WireData implements Module
      */
     public function hasShortcode($content, $tag)
     {
-        if ( false === strpos( $content, '[' ) ) {
+        if (false === strpos( $content, '[' )) {
             return false;
         }
 
