@@ -117,6 +117,7 @@ class MarkupWPShortcodes extends WireData implements Module
 
         return $content;
     }
+    
     /**
      * The following code is an adaptation of WP shortcode functions taken from
      * @package WordPress
