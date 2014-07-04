@@ -62,7 +62,7 @@ class MarkupWPShortcodes extends WireData implements Module
 
     /**
      * Parse the content searching for shortcode tags and return the generated
-     * html
+     * html. Also loads the default shortcodes definition file if found.
      *
      * @param string $content
      * @return string
