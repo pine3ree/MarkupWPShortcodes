@@ -82,7 +82,7 @@ class MyShortcodes
         $atts['class'] = isset($atts['class']) ? $class . ' ' . $atts['class'] : $class;
 
         $h = $atts['heading'];
-        $title = !empty($atts['title']) ? "<h$h>$title</h$h>" : '';
+        $title = !empty($atts['title']) ? "<h$h>". $atts['title'] ."</h$h>" : '';
 
         $html = '<div class="' . $atts['class'] . '">' . $title . $content . '</div>';
 
