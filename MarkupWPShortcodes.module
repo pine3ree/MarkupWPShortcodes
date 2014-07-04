@@ -19,7 +19,7 @@ class MarkupWPShortcodes extends WireData implements Module
     {
         return array(
             'title'    => 'Markup WP Shortcodes',
-            'version'  => 12,
+            'version'  => 13,
             'summary'  => 'The WP shortcode rendering engine is now available in PW template files',
             'author'   => 'pine3ree',
             'href'     => 'https://github.com/pine3ree/MarkupWPShortcodes',
@@ -101,6 +101,7 @@ class MarkupWPShortcodes extends WireData implements Module
 
     /**
      * Cleanup wrapping paragraphs before rendering shortcodes
+     *
      * @param string|null $content
      * @return string
      */
@@ -112,8 +113,7 @@ class MarkupWPShortcodes extends WireData implements Module
             return $content;
         }
 
-        $content = preg_replace('/\<p\>\[/i', '[', $content);
-        $content = preg_replace('/\]\<\/p\>/i', ']', $content);
+        $content = preg_replace('/\<p\>\[([^\]]+)\]\<\/p\>/i', '[$1]', $content);
 
         return $content;
     }
