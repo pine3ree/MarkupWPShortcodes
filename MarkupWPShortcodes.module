@@ -34,16 +34,16 @@ class MarkupWPShortcodes extends WireData implements Module
 
     public function ___install()
     {
-		if(version_compare(PHP_VERSION, '5.3.8', '<')) {
-			throw new WireException("This module requires PHP 5.3.8 or newer.");
-		}
+        if(version_compare(PHP_VERSION, '5.3.8', '<')) {
+            throw new WireException("This module requires PHP 5.3.8 or newer.");
+        }
 
         $pwVer = 100 * ProcessWire::versionMajor + 10 * ProcessWire::versionMinor + ProcessWire::versionRevision;
 
         if($pwVer < 240) {
-			throw new WireException("This module requires ProcessWire 2.4.0 or newer.");
-		}
-	}
+            throw new WireException("This module requires ProcessWire 2.4.0 or newer.");
+        }
+    }
 
     /**
      * getter/setter for initialized property
@@ -158,7 +158,7 @@ class MarkupWPShortcodes extends WireData implements Module
      * $shortcodes = $modules->get('MarkupWPShortcodes');
      *
      * $shortcodes->add('footag', function ($atts) {
-     * 	   return "foo = {$atts[foo]}";
+     *        return "foo = {$atts[foo]}";
      * });
      * </code>
      *
@@ -171,11 +171,11 @@ class MarkupWPShortcodes extends WireData implements Module
      *
      * $bartag = ;
      *
-     * 	return "foo = {$args['foo']}";
+     *     return "foo = {$args['foo']}";
      * }
      * $shortcodes->add('bartag', function ($atts) use ($shortcode) {
      *     $args = $shortcode->attributes(array(
-     * 	       'foo' => 'no foo',
+     *            'foo' => 'no foo',
      *         'baz' => 'default baz',
      *     ), $atts);
      * });
