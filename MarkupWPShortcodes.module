@@ -70,7 +70,7 @@ class MarkupWPShortcodes extends WireData implements Module
     public function render($content)
     {
         if (!$this->initialized) {
-            $this->loadDefinitions();
+            $this->load();
             $this->initialized = true;
         }
 
@@ -85,7 +85,7 @@ class MarkupWPShortcodes extends WireData implements Module
      * @return \MarkupWPShortcodes
      * @throws WireException
      */
-    public function loadDefinitions($definitionFile = null)
+    public function load($definitionFile = null)
     {
         if (!$definitionFile) {
             $definitionFile = $this->wire('config')->paths->templates . self::DEFAULT_DEFINITION_FILE;
