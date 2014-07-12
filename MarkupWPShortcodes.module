@@ -229,7 +229,7 @@ class MarkupWPShortcodes extends WireData implements Module
      *
      * @param string $tag shortcode tag to remove hook for.
      */
-    function remove($tag)
+    public function remove($tag)
     {
         if (isset($this->tags[$tag]) || array_key_exists($tag, $this->tags)) {
             unset($this->tags[$tag]);
@@ -239,7 +239,7 @@ class MarkupWPShortcodes extends WireData implements Module
     /**
      * Clear all shortcodes.
      */
-    function removeAll() {
+    public function removeAll() {
         $this->tags = array();
     }
 
